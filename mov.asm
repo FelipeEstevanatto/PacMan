@@ -164,11 +164,11 @@ para_pac_cima:
     sw $22, 5380($8)                      #recebe valor do teclado
     addi $26, $0, 7
     jal moveGhost1
-    pintafanCP:
+pintafanCP:
     jal moveGhost2                        #movimenta fantasmas
-    pintafanCP2:
+pintafanCP2:
     jal moveGhost3
-    pintafanCP3:
+pintafanCP3:
     jal pinta_fantasma1
     jal pinta_fantasma2
     jal pinta_fantasma3
@@ -258,7 +258,7 @@ move_pac_esquerda:
     beq $11, $21, para_pac_esquerda
     beq $12, $21, para_pac_esquerda
     beq $13, $21, para_pac_esquerda
-    beq $12, $23, pontuaEsq
+    beq $12, $23, pontuaEsq     # Check for point collection $23 color
     jal cont_Esq
 pontuaEsq:
     addi $29, $29, 200
@@ -304,7 +304,7 @@ move_pac_direita:
     beq $11, $21, para_pac_direita
     beq $12, $21, para_pac_direita
     beq $13, $21, para_pac_direita
-    beq $12, $23, pontuaDir
+    beq $12, $23, pontuaDir     # Check for point collection $23 color
     jal cont_Dir
 pontuaDir:
     addi $29, $29, 200
@@ -374,7 +374,7 @@ move_pac_cima:
     beq $11, $21, para_pac_cima
     beq $12, $21, para_pac_cima
     beq $13, $21, para_pac_cima
-    beq $12, $23, pontuaCima
+    beq $12, $23, pontuaCima     # Check for point collection $23 color
     jal cont_Cima
 pontuaCima:
     addi $29, $29, 200
@@ -420,7 +420,7 @@ move_pac_baixo:
     beq $11, $21, para_pac_baixo
     beq $12, $21, para_pac_baixo
     beq $13, $21, para_pac_baixo
-    beq $12, $23, pontuaBaixo
+    beq $12, $23, pontuaBaixo     # Check for point collection $23 color
     jal cont_baixo
 pontuaBaixo:
     addi $29, $29, 200
@@ -550,36 +550,30 @@ addi $30, $0, 0
     jal returnpac
     
 decide_CimaBaixo:
-
-   beq $30, 2, cimafan
-   beq $30, 3, baixofan 
-
-   
+    beq $30, 2, cimafan
+    beq $30, 3, baixofan 
     
     jal baixofan
     
-    cimafan:
+cimafan:
     addi $30, $zero, 2
     addi $10, $10, -1536
     jal returnpac
-    
 
 
 decide_DireitaEsquerda:
-
-  
     beq $30, 2, esquerdafan
     beq $30, 3, direitafan
     jal direitafan
     
-    esquerdafan:
+esquerdafan:
     addi $30, $0, 2
     addi $10, $10, -12
     jal returnpac
     
 decide_baixoEsquerda:
-addi $30, $0, 0
-addi $a1, $zero, 100
+    addi $30, $0, 0
+    addi $a1, $zero, 100
     addi $v0, $zero, 42
     syscall
     addi $v0, $zero, 1
@@ -591,10 +585,9 @@ addi $a1, $zero, 100
     bgt $a0, $30, baixofan
     jal esquerdafan
     
-    
 decide_CimaEsquerda:
-addi $30, $0, 0
-addi $a1, $zero, 100
+    addi $30, $0, 0
+    addi $a1, $zero, 100
     addi $v0, $zero, 42
     syscall
     addi $v0, $zero, 1
@@ -608,8 +601,8 @@ addi $a1, $zero, 100
     
    
 decide_CimaDireita:
-addi $30, $0, 0
-addi $a1, $zero, 100
+    addi $30, $0, 0
+    addi $a1, $zero, 100
     addi $v0, $zero, 42
     syscall
     addi $v0, $zero, 1
