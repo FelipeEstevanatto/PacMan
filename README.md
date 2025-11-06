@@ -32,8 +32,5 @@ Isso escreve no buffer do teclado (teoricamente read-only) o valor 0, que é int
 guarda o valor do registrador $0, que é hardwired parar ser 0, então o valor é lido e imediatamente descartado (útil para limpar o buffer do teclado).
 
 
- é o valor que representa a tecla 'A' no teclado (definido pela ferramenta Memory-Mapped I/O)   
-
-
 # Macros e .eqv
-https://dpetersanderson.github.io/Help/MacrosHelp.html
+[Macros in MIPS Assembly Language](https://dpetersanderson.github.io/Help/MacrosHelp.html) são o equivalente ao #define em C, e foram utilizados para simplificar alguns valores fixos, como os valores ASCII das teclas WASD, ou endereços de memória MMIO. O eqv é similar, mas não é uma macro, e sim uma substituição direta de texto pelo assembler antes da montagem do código.

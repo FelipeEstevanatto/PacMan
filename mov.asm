@@ -53,11 +53,11 @@ player_loop_stopped_right:          # Pauses Pacman movement on right wall
     sw $22, 5888($8)
     addi $26, $0, 5               #prende o pac man na parede e move todos fantasmas
     jal ghost1_ai_update
-pintafanDP:
+ghost1_return_stopped_right:
     jal ghost2_ai_update
-pintafanDP2:
+ghost2_return_stopped_right:
     jal ghost3_ai_update
-pintafanDP3:
+ghost3_return_stopped_right:
     jal render_ghost_1
     jal render_ghost_2
     jal render_ghost_3
@@ -78,7 +78,7 @@ pintafanDP3:
     j player_loop_stopped_right
 
 
-render_clear_player_right:                           #apaga o pac man virado para direita
+render_clear_player_right:                           # apaga o pac man virado para direita
     sw $20, 4860($8)
     sw $20, 4864($8)
     sw $20, 5372($8)
@@ -86,7 +86,6 @@ render_clear_player_right:                           #apaga o pac man virado par
     sw $20, 5888($8)
     addi $16, $0, 10000       # Reduced delay - ghosts were moving faster
     jr $31
-
 
 render_player_left:             #Movimento pac esquerda
     sw $22, 4860($8)
@@ -106,11 +105,11 @@ player_loop_stopped_left:
     sw $22, 5888($8)                     #recebe valor do teclado
     addi $26, $0, 6
     jal ghost1_ai_update
-pintafanEP:                          #move os fantasmas 
+ghost1_return_stopped_left:                          #move os fantasmas - Return target for Ghost 1 when player is stopped left
     jal ghost2_ai_update
-pintafanEP2:
+ghost2_return_stopped_left:
     jal ghost3_ai_update
-pintafanEP3:
+ghost3_return_stopped_left:
     jal render_ghost_1
     jal render_ghost_2
     jal render_ghost_3
@@ -140,7 +139,6 @@ render_clear_player_left:
     addi $16, $0, 10000       # Reduced delay - ghosts were moving faster
     jr $31
 
-
 render_player_up:
     sw $22, 4860($8)
     sw $22, 4868($8)
@@ -149,7 +147,6 @@ render_player_up:
     sw $22, 5380($8)
     addi $16, $0, 10000       # Reduced delay - ghosts were moving faster
     jr $31
-
 
 render_clear_player_up:
     sw $20, 4860($8)
@@ -170,11 +167,11 @@ player_loop_stopped_up:
     sw $22, 5380($8)                      #recebe valor do teclado
     addi $26, $0, 7
     jal ghost1_ai_update
-pintafanCP:
+ghost1_return_stopped_up:                             # Return target for Ghost 1 when player is stopped up.
     jal ghost2_ai_update                        #movimenta fantasmas
-pintafanCP2:
+ghost2_return_stopped_up:
     jal ghost3_ai_update
-pintafanCP3:
+ghost3_return_stopped_up:
     jal render_ghost_1
     jal render_ghost_2
     jal render_ghost_3
@@ -223,11 +220,11 @@ player_loop_stopped_down:
     sw $22, 5380($8)
     addi $26, $0, 8
     jal ghost1_ai_update
-pintafanBP:
+ghost1_return_stopped_down:                 # Return target for Ghost 1 when player is stopped down.
     jal ghost2_ai_update
-pintafanBP2:
+ghost2_return_stopped_down:
     jal ghost3_ai_update
-pintafanBP3:
+ghost3_return_stopped_down:
     jal render_ghost_1
     jal render_ghost_2
     jal render_ghost_3
@@ -274,11 +271,11 @@ player_continue_move_left:
     addi $8, $8, -4
     addi $26, $0, 1
     jal ghost1_ai_update
-pintafanE:
+ghost1_return_moving_left:
     jal ghost2_ai_update
-pintafanE2:
+ghost2_return_moving_left:
     jal ghost3_ai_update
-pintafanE3:
+ghost3_return_moving_left:
     jal render_player_left
     jal render_ghost_1
     jal render_ghost_2
@@ -320,11 +317,11 @@ player_continue_move_right:
     addi $8, $8, 4
     addi $26, $0, 2
     jal ghost1_ai_update
-pintafanD:
+ghost1_return_moving_right:                  # Return target for Ghost 1 when player is moving right.
     jal ghost2_ai_update
-pintafanD2:
+ghost2_return_moving_right:
     jal ghost3_ai_update
-pintafanD3:
+ghost3_return_moving_right:
     jal render_player_right
     jal render_ghost_1
     jal render_ghost_2
@@ -389,11 +386,11 @@ player_continue_move_up:
     addi $8, $8, -512
     addi $26, $0, 3
     jal ghost1_ai_update
-pintafanC:
+ghost1_return_moving_up:
     jal ghost2_ai_update
-pintafanC2:
+ghost2_return_moving_up:
     jal ghost3_ai_update
-pintafanC3:
+ghost3_return_moving_up:
     jal render_player_up
     jal render_ghost_1
     jal render_ghost_2
@@ -435,11 +432,11 @@ player_continue_move_down:
     addi $8, $8, 512
     addi $26, $0, 4
     jal ghost1_ai_update
-pintafanB:
+ghost1_return_moving_down:
     jal ghost2_ai_update
-pintafanB2:
+ghost2_return_moving_down:
     jal ghost3_ai_update
-pintafanB3:
+ghost3_return_moving_down:
     jal render_player_down
     jal render_ghost_1
     jal render_ghost_2
@@ -481,52 +478,52 @@ ghost1_ai_check_walls:                             #verifica todas possiveis col
     beq $14, $21, ghost1_ai_check_wall_up
     jal ghost1_ai_decide_all_dirs
 ghost1_ai_return:
-    beq $26, 1, pintafanE
-    beq $26, 2, pintafanD
-    beq $26, 3, pintafanC
-    beq $26, 4, pintafanB
-    beq $26, 5, pintafanDP
-    beq $26, 6, pintafanEP
-    beq $26, 7, pintafanCP
-    beq $26, 8, pintafanBP
-    jal pintafanD
+    beq $26, 1, ghost1_return_moving_left
+    beq $26, 2, ghost1_return_moving_right
+    beq $26, 3, ghost1_return_moving_up
+    beq $26, 4, ghost1_return_moving_down
+    beq $26, 5, ghost1_return_stopped_right              # Return target for Ghost 1 when player is stopped right.
+    beq $26, 6, ghost1_return_stopped_left
+    beq $26, 7, ghost1_return_stopped_up
+    beq $26, 8, ghost1_return_stopped_down
+    jal ghost1_return_moving_right
 ghost1_ai_check_wall_down:
     beq $12, $21, ghost1_ai_check_wall_down_right
-andB2:
+ghost1_ai_check_wall_down_cont:
     beq $12, $21, ghost1_ai_decide_down_right
     beq $13, $21, ghost1_ai_decide_down_left
-    beq $14, $21, decide_DireitaEsquerda
+    beq $14, $21, ghost1_ai_decide_left_right
     jal ghost1_ai_decide_down_left_right
 ghost1_ai_check_wall_down_right:
     beq $13, $21, ghost1_move_down
     beq $14, $21, ghost1_move_left
-    jal andB2
+    jal ghost1_ai_check_wall_down_cont
 ghost1_ai_check_wall_right:
-    beq $13, $21, andDireitaEsquerda
-andD2:
+    beq $13, $21, ghost1_ai_check_wall_right_left
+ghost1_ai_check_wall_right_cont:
     beq $11, $21, ghost1_ai_decide_down_right
-    beq $14, $21, decide_CimaDireita
+    beq $14, $21, ghost1_ai_decide_up_right
     beq $13, $21, ghost1_ai_decide_up_down
-    jal decideCDB
-andDireitaEsquerda:
+    jal ghost1_ai_decide_up_right_down
+ghost1_ai_check_wall_right_left:
     beq $14, $21, ghost1_move_up
-    jal andD2
+    jal ghost1_ai_check_wall_right_cont
 
 ghost1_ai_check_wall_left:
     beq $11, $21, ghost1_ai_check_wall_left_down
-andE2:
+ghost1_ai_check_wall_left_cont:
     beq $14, $21, ghost1_ai_decide_up_left
     beq $11, $21, ghost1_ai_decide_down_left
     beq $12, $21, ghost1_ai_decide_up_down
-    jal decideCEB
+    jal ghost1_ai_decide_up_left_down
 ghost1_ai_check_wall_left_down:
     beq $13, $21, ghost1_move_down
     beq $14, $21, ghost1_move_right
 ghost1_ai_check_wall_up:
-    beq $11, $21, decide_DireitaEsquerda
-    beq $12, $21, decide_CimaDireita
+    beq $11, $21, ghost1_ai_decide_left_right
+    beq $12, $21, ghost1_ai_decide_up_right
     beq $13, $21, ghost1_ai_decide_up_left
-    jal decideCED
+    jal ghost1_ai_decide_up_left_right
 ghost1_ai_decide_down_right:                            #decide através de uma random qual direção vai seguir
 
 addi $30, $0, 0
@@ -568,7 +565,7 @@ ghost1_move_up:
     jal ghost1_ai_return
 
 
-decide_DireitaEsquerda:
+ghost1_ai_decide_left_right:
     beq $30, 2, ghost1_move_left
     beq $30, 3, ghost1_move_right
     jal ghost1_move_right
@@ -607,7 +604,7 @@ ghost1_ai_decide_up_left:
     jal ghost1_move_left
     
    
-decide_CimaDireita:
+ghost1_ai_decide_up_right:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42
@@ -636,7 +633,7 @@ ghost1_ai_decide_down_left_right:   # (A 3-way "T-junction")
     bgt $a0, $30, ghost1_move_down
     bgt $a0, $5, ghost1_move_left
     jal ghost1_move_right
-decideCDB:
+ghost1_ai_decide_up_right_down:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42
@@ -670,7 +667,7 @@ ghost1_ai_decide_all_dirs:      # (A 4-way intersection)
     bgt $a0, $6, ghost1_move_down
     jal ghost1_move_left
     
-decideCEB:
+ghost1_ai_decide_up_left_down:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42 
@@ -686,7 +683,7 @@ decideCEB:
     bgt $a0, $5, ghost1_move_up
     jal ghost1_move_left
    
-decideCED:
+ghost1_ai_decide_up_left_right:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42
@@ -715,53 +712,53 @@ ghost2_ai_check_walls:                              #verifica todas possiveis co
     beq $14, $21, ghost2_ai_check_wall_up
     jal ghost2_ai_decide_all_dirs
 ghost2_ai_return:
-    beq $26, 1, pintafanE2
-    beq $26, 2, pintafanD2
-    beq $26, 3, pintafanC2
-    beq $26, 4, pintafanB2
-    beq $26, 5, pintafanDP2
-    beq $26, 6, pintafanEP2
-    beq $26, 7, pintafanCP2
-    beq $26, 8, pintafanBP2
-    jal pintafanD2
+    beq $26, 1, ghost2_return_moving_left
+    beq $26, 2, ghost2_return_moving_right
+    beq $26, 3, ghost2_return_moving_up
+    beq $26, 4, ghost2_return_moving_down
+    beq $26, 5, ghost2_return_stopped_right
+    beq $26, 6, ghost2_return_stopped_left
+    beq $26, 7, ghost2_return_stopped_up
+    beq $26, 8, ghost2_return_stopped_down
+    jal ghost2_return_moving_right
 ghost2_ai_check_wall_down:
     beq $12, $21, ghost2_ai_check_wall_down_right
-andB22:
+ghost2_ai_check_wall_down_cont:
     beq $12, $21, ghost2_ai_decide_down_right
     beq $13, $21, ghost2_ai_decide_down_left
-    beq $14, $21, decide_DireitaEsquerda2
+    beq $14, $21, ghost2_ai_decide_left_right
     jal ghost2_ai_decide_down_left_right
 ghost2_ai_check_wall_down_right:
     beq $13, $21, ghost2_move_down
     beq $14, $21, ghost2_move_left
-    jal andB22
+    jal ghost2_ai_check_wall_down_cont
 ghost2_ai_check_wall_right:
-    beq $13, $21, andDireitaEsquerda2
-andD22:
+    beq $13, $21, ghost2_ai_check_wall_right_left
+ghost2_ai_check_wall_right_cont:
     beq $11, $21, ghost2_ai_decide_down_right
-    beq $14, $21, decide_CimaDireita2
+    beq $14, $21, ghost2_ai_decide_up_right
     beq $13, $21, ghost2_ai_decide_up_down
-    jal decideCDB2
-andDireitaEsquerda2:
+    jal ghost2_ai_decide_up_right_down
+ghost2_ai_check_wall_right_left:
     beq $14, $21, ghost2_move_up
 
-    jal andD22
+    jal ghost2_ai_check_wall_right_cont
 
 ghost2_ai_check_wall_left:
     beq $11, $21, ghost2_ai_check_wall_left_down
-andE22:
+ghost2_ai_check_wall_left_cont:
     beq $14, $21, ghost2_ai_decide_up_left
     beq $11, $21, ghost2_ai_decide_down_left
     beq $12, $21, ghost2_ai_decide_up_down
-    jal decideCEB2
+    jal ghost2_ai_decide_up_left_down
 ghost2_ai_check_wall_left_down:
     beq $13, $21, ghost2_move_down
     beq $14, $21, ghost2_move_right
 ghost2_ai_check_wall_up:
-    beq $11, $21, decide_DireitaEsquerda2
-    beq $12, $21, decide_CimaDireita2
+    beq $11, $21, ghost2_ai_decide_left_right
+    beq $12, $21, ghost2_ai_decide_up_right
     beq $13, $21, ghost2_ai_decide_up_left
-    jal decideCED2
+    jal ghost2_ai_decide_up_left_right
 
 ghost2_ai_decide_down_right:
     addi $30, $0, 0                           #decide através de uma random qual direção vai seguir
@@ -801,7 +798,7 @@ ghost2_move_up:
     addi $9 $9, -1536
     jal ghost2_ai_return
 
-decide_DireitaEsquerda2:
+ghost2_ai_decide_left_right:
     beq $27, 2, ghost2_move_left
     beq $27, 3, ghost2_move_right
     jal ghost2_move_right
@@ -840,7 +837,7 @@ ghost2_ai_decide_up_left:
     bgt $a0, $30, ghost2_move_up
     jal ghost2_move_left
    
-decide_CimaDireita2:
+ghost2_ai_decide_up_right:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42
@@ -871,7 +868,7 @@ ghost2_ai_decide_down_left_right:   # (A 3-way "T-junction")
     bgt $a0, $5, ghost2_move_left
     jal ghost2_move_right
 
-decideCDB2:
+ghost2_ai_decide_up_right_down:
     addi $30, $0, 0
     addi $5, $0, 0
     addi $a1, $zero, 100
@@ -908,7 +905,7 @@ ghost2_ai_decide_all_dirs:      # (A 4-way intersection)
     bgt $a0, $30, ghost2_move_down
     jal ghost2_move_left
     
-decideCEB2:
+ghost2_ai_decide_up_left_down:
     addi $30, $0, 0
     addi $5, $0, 0
     addi $a1, $zero, 100
@@ -925,7 +922,7 @@ decideCEB2:
     bgt $a0, $30, ghost2_move_down
     jal ghost2_move_left
    
-decideCED2:
+ghost2_ai_decide_up_left_right:
     addi $30, $0, 0
     addi $5, $0, 0
     addi $a1, $zero, 100
@@ -956,52 +953,52 @@ ghost3_ai_check_walls:
     beq $14, $21, ghost3_ai_check_wall_up
     jal ghost3_ai_decide_all_dirs
 ghost3_ai_return:
-    beq $26, 1, pintafanE3
-    beq $26, 2, pintafanD3
-    beq $26, 3, pintafanC3
-    beq $26, 4, pintafanB3
-    beq $26, 5, pintafanDP3
-    beq $26, 6, pintafanEP3
-    beq $26, 7, pintafanCP3
-    beq $26, 8, pintafanBP3
-    jal pintafanD3
+    beq $26, 1, ghost3_return_moving_left
+    beq $26, 2, ghost3_return_moving_right
+    beq $26, 3, ghost3_return_moving_up
+    beq $26, 4, ghost3_return_moving_down
+    beq $26, 5, ghost3_return_stopped_right
+    beq $26, 6, ghost3_return_stopped_left
+    beq $26, 7, ghost3_return_stopped_up
+    beq $26, 8, ghost3_return_stopped_down
+    jal ghost3_return_moving_right
 ghost3_ai_check_wall_down:
     beq $12, $21, ghost3_ai_check_wall_down_right
-andB23:
+ghost3_ai_check_wall_down_cont:
     beq $12, $21, ghost3_ai_decide_down_right
     beq $13, $21, ghost3_ai_decide_down_left
-    beq $14, $21, decide_DireitaEsquerda3
+    beq $14, $21, ghost3_ai_decide_left_right
     jal ghost3_ai_decide_down_left_right
 ghost3_ai_check_wall_down_right:
     beq $13, $21, ghost3_move_down
     beq $14, $21, ghost3_move_left
-    jal andB23
+    jal ghost3_ai_check_wall_down_cont
 ghost3_ai_check_wall_right:
-    beq $13, $21, andDireitaEsquerda3
-andD23:
+    beq $13, $21, ghost3_ai_check_wall_right_left
+ghost3_ai_check_wall_right_cont:
     beq $11, $21, ghost3_ai_decide_down_right
-    beq $14, $21, decide_CimaDireita3
+    beq $14, $21, ghost3_ai_decide_up_right
     beq $13, $21, ghost3_ai_decide_up_down
-    jal decideCDB3
-andDireitaEsquerda3:
+    jal ghost3_ai_decide_up_right_down
+ghost3_ai_check_wall_right_left:
     beq $14, $21, ghost3_move_up
 
-    jal andD23
+    jal ghost3_ai_check_wall_right_cont
 ghost3_ai_check_wall_left:
     beq $11, $21, ghost3_ai_check_wall_left_down
-andE23:
+ghost3_ai_check_wall_left_cont:
     beq $14, $21, ghost3_ai_decide_up_left
     beq $11, $21, ghost3_ai_decide_down_left
     beq $12, $21, ghost3_ai_decide_up_down
-    jal decideCEB3
+    jal ghost3_ai_decide_up_left_down
 ghost3_ai_check_wall_left_down:
     beq $13, $21, ghost3_move_down
     beq $14, $21, ghost3_move_right
 ghost3_ai_check_wall_up:
-    beq $11, $21, decide_DireitaEsquerda3
-    beq $12, $21, decide_CimaDireita3
+    beq $11, $21, ghost3_ai_decide_left_right
+    beq $12, $21, ghost3_ai_decide_up_right
     beq $13, $21, ghost3_ai_decide_up_left
-    jal decideCED3
+    jal ghost3_ai_decide_up_left_right
 ghost3_ai_decide_down_right:
     addi $30, $0, 0                         #decide através de uma random qual direção vai seguir
 
@@ -1041,7 +1038,7 @@ ghost3_move_up:
     addi $18, $18, -1536
     jal ghost3_ai_return
 
-decide_DireitaEsquerda3:
+ghost3_ai_decide_left_right:
     beq $28, 2, ghost3_move_left
     beq $28, 3, ghost3_move_right
     jal ghost3_move_right
@@ -1081,7 +1078,7 @@ ghost3_ai_decide_up_left:
     jal ghost3_move_left
     
    
-decide_CimaDireita3:
+ghost3_ai_decide_up_right:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42
@@ -1110,7 +1107,7 @@ ghost3_ai_decide_down_left_right:   # (A 3-way "T-junction")
     bgt $a0, $5, ghost3_move_down
     bgt $a0, $5, ghost3_move_left
     jal ghost3_move_right
-decideCDB3:
+ghost3_ai_decide_up_right_down:
     addi $30, $0, 0
    addi $a1, $zero, 100
     addi $v0, $zero, 42
@@ -1144,7 +1141,7 @@ ghost3_ai_decide_all_dirs:      # (A 4-way intersection)
     bgt $a0, $30, ghost3_move_down
     jal ghost3_move_left
     
-decideCEB3:
+ghost3_ai_decide_up_left_down:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42 
@@ -1160,7 +1157,7 @@ decideCEB3:
     bgt $a0, $30, ghost3_move_up
     jal ghost3_move_left
    
-decideCED3:
+ghost3_ai_decide_up_left_right:
     addi $30, $0, 0
     addi $a1, $zero, 100
     addi $v0, $zero, 42
