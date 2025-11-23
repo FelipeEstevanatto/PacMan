@@ -34,6 +34,7 @@ guarda o valor do registrador $0, que é hardwired parar ser 0, então o valor �
 
 # Macros e .eqv
 [Macros in MIPS Assembly Language](https://dpetersanderson.github.io/Help/MacrosHelp.html) são o equivalente ao #define em C, e foram utilizados para simplificar alguns valores fixos, como os valores ASCII das teclas WASD, ou endereços de memória MMIO. O eqv é similar, mas não é uma macro, e sim uma substituição direta de texto pelo assembler antes da montagem do código.
+DOC Syscalls: https://asm-editor.specy.app/documentation/mips/syscall
 
 
 ## Problemas atuais
@@ -41,3 +42,6 @@ guarda o valor do registrador $0, que é hardwired parar ser 0, então o valor �
 - [ ] Não faz muito sentido como passar para a próxima fase (quantas bolinhas coletar?)
 - [ ] MUITO código repetido, principalmente na AI dos fantasmas
 - [ ] Aparentemente algumas vezes na diagonal os inimigos não matam o jogador mesmo quando deveriam (colisão não detectada?)
+
+## Registradores usados
+- $10: Base address do mapa
