@@ -1,7 +1,8 @@
-.include"clearScreen.asm"
-.include"set0gameover.asm"
-.include"set0youwin.asm"
-.include"set0map1.asm"
+.include "clearScreen.asm"
+.include "map2.asm"
+.include "gameover.asm"
+.include "set0youwin.asm"
+.include "set0map1.asm"
 .data
 .eqv    KEYBOARD_ADDR, 68719411204($zero)
 .eqv    KEY_A 97
@@ -346,9 +347,13 @@ ghost3_return_moving_right:
     jal render_clear_ghost_3
     j player_loop_moving_right
 
-game_over_sequence:
-    set0gameover()          #perdeu o jogo
-    jr $31
+game_over_sequence:  #perdeu o jogo
+    clearScreen()
+    gameover()
+
+    li $v0, 10 # Exit program
+    syscall
+
 game_advance_level:
     addi $29, $0, 0
     lui $8, 0x1001		#Setar o primeiro pixel
@@ -361,6 +366,7 @@ game_advance_level:
     beq $17, 3 game_win_screen       #completou tudo
 load_map_2:
     clearScreen()
+    map2()
     jr $31
 load_map_1:
     Draw_Map1()

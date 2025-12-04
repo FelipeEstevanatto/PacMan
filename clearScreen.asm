@@ -1,4 +1,3 @@
-.include "map2.asm"
 .data
 .text
 
@@ -8198,5 +8197,4 @@ sw $20, 32756($10)
 sw $20, 32760($10)
 sw $20, 32764($10)
 
-map2()
 .end_macro

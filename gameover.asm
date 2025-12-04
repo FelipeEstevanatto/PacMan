@@ -1,7 +1,7 @@
 .text
 .macro gameover
 gameover:
-cor:
+# Definicao de cores
 addi $20, $0, 0x000000	#Cor preta
 addi $21, $0, 0x4169E1	#Cor azul
 addi $22, $0, 0xffff00	#Cor amarela
@@ -16,7 +16,7 @@ addi $25, $0, 0xff007f  #rosa
 addi $19, $0, 0x00ff00  #verde
 addi $18, $0, 0x00a8ff
 addi $17, $0, 0x964b00
-#fantasma
+# Red Ghost
 
 sw $28, 1596($10)
 sw $28, 1600($10)
@@ -2010,6 +2010,5 @@ sw $30, 22948($10)
 sw $30, 22952($10)
 sw $30, 22956($10)
 sw $30, 22960($10)
-li $v0, 10
-syscall
+
 .end_macro
