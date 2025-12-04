@@ -1,10 +1,8 @@
 .include "set0Menu.asm" 	#Para chamar o arquivo externo
 .macro menu
 .text
+
 menu:
-
-
-
 sw $22, 5240($10)
 sw $22, 5244($10)
 sw $22, 5248($10)

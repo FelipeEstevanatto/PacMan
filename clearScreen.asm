@@ -2,9 +2,8 @@
 .data
 .text
 
-
-.macro set0
-set0:
+.macro clearScreen
+clearScreen:
 lui $10, 0x1001		#Setar o primeiro pixel
 sw $20, 0($10)
 sw $20, 4($10)

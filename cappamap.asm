@@ -1,4 +1,4 @@
-.include"mov.asm"
+.include "mov.asm"
 .macro cappamap
 cappamap:
 sw $21, 0($10)
@@ -2841,38 +2841,38 @@ li $a0, 30 # Tempo da pausa em milissegundos
 syscall
 
 li $a0, 60 # Nota Dó
-li $a1, 150# tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150# Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 67 # Nota Sol
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 64 # Nota Mi
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 60 # Nota Dó
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 67 # Nota Sol
-li $a1, 175 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 175 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -2881,17 +2881,17 @@ li $a0, 50 # Tempo da pausa em milissegundos
 syscall
 
 li $a0, 64 # Nota Mi
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 61 # Ré sustenido
-li $a1, 300 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 300 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -2914,45 +2914,45 @@ syscall
 # 2 parte
 
 li $a0, 61 # Ré sustenido
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 70 # Lá sustenido
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 65 # Nota Fá
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 61 # Ré sustenido
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 70 # Lá sustenido
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 175 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 175 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 65 # Nota Fá
-li $a1, 145 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 145 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -2961,10 +2961,10 @@ li $a0, 100 # Tempo da pausa em milissegundos
 syscall
 
 li $a0, 60 # Nota Dó
-li $a1, 270 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 300 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 270 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 300 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -2989,31 +2989,31 @@ syscall
 #3 parte
 
 li $a0, 60 # Nota Dó
-li $a1, 150# tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150# Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 67 # Nota Sol
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 64 # Nota Mi
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 60 # Nota Dó
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -3022,10 +3022,10 @@ li $a0, 30 # Tempo da pausa em milissegundos
 syscall
 
 li $a0, 67 # Nota Sol
-li $a1, 175 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 175 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -3034,10 +3034,10 @@ li $a0, 50 # Tempo da pausa em milissegundos
 syscall
 
 li $a0, 64 # Nota Mi
-li $a1, 370 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 370 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 
@@ -3047,24 +3047,24 @@ li $a0, 30 # Tempo da pausa em milissegundos
 syscall
 
 li $a0, 64 # Nota Mi
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 65 # Nota Fá
-li $a1, 140 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 140 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 66 # Nota Fá sustenido
-li $a1, 250 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 250 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -3084,24 +3084,24 @@ syscall
 
 
 li $a0, 66 # Nota Fá sustenido
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 67 # Nota Sol
-li $a1, 140 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 140 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 68 # Nota Sol Sustenido
-li $a1, 250 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 250 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -3119,24 +3119,24 @@ syscall
 
 
 li $a0, 68 # Nota Sol Sustenido
-li $a1, 150 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 150 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 69 # Nota Lá
-li $a1, 140 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 140 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 li $a0, 70 # Lá sustenido
-li $a1, 250 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 250 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 
 # Pausa entre as notas (por exemplo, 200 milissegundos)
@@ -3146,10 +3146,10 @@ syscall
 
 
 li $a0, 60 # Nota Dó
-li $a1, 300 # tempo em milissegundos
-li $a2, 2  # instrumento
-li $a3, 127 # volume mÃ¡ximo
-la $v0, 33 # FunÃ§Ã£o som com sleep
+li $a1, 300 # Time in miliseconds
+li $a2, 2  # instrument
+li $a3, 127 # Max volume
+la $v0, 33 # Function with sleep 
 syscall
 mov()
 .end_macro

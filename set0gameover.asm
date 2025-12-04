@@ -2,8 +2,8 @@
 .data
 .text
 
-
 .macro set0gameover
+
 set0gameover:
 lui $10, 0x1001		#Setar o primeiro pixel
 sw $20, 0($10)

@@ -1,4 +1,4 @@
-.include"set0.asm"
+.include"clearScreen.asm"
 .include"set0gameover.asm"
 .include"set0youwin.asm"
 .include"set0map1.asm"
@@ -360,7 +360,7 @@ game_advance_level:
     beq $17, 2, load_map_1    #chama terceira fase
     beq $17, 3 game_win_screen       #completou tudo
 load_map_2:
-    set0()
+    clearScreen()
     jr $31
 load_map_1:
     Draw_Map1()

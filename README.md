@@ -13,7 +13,7 @@
 - Focar no MMIO Simulator Keyboard e digitar lá
 
 
-set0* - Pinta a tela toda com uma "imagem" como de vitória, gameoner, menu, youwin
+clearScreen - Pinta a tela toda de preto para "limpar" a tela entre grande sprites
 
 Cores definidas no código no main.asm, desenhadas manualmente pixel a pixel por endereço de memória
 
