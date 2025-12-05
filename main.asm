@@ -12,20 +12,19 @@ menu() 		        #To call a function located in another file - associated with t
 
 .set nomacro 		#Marks the end of the external file inclusion
 colors:
+addi $18, $0, 0x00A8FF  # Light Blue
+addi $19, $0, 0x00FF00  # Green
 addi $20, $0, 0x000000	# Black
 addi $21, $0, 0x4169E1	# Blue
 addi $22, $0, 0xFFFF00	# Yellow
 addi $23, $0, 0xCFBA95 	# Score color
 addi $24, $0, 0xDC143C  # Crimson
+addi $25, $0, 0xFF007F  # Pink
 addi $26, $0, 0xFFA500  # Orange
 addi $27, $0, 0xFF6600  # Dark Orange
 addi $28, $0, 0xFF0000  # Red Game Over
-addi $29, $0, 0x808080  # Gray
 addi $30, $0, 0xFFFFFF  # White
-addi $25, $0, 0xFF007F  # Pink
-addi $19, $0, 0x00FF00  # Green
-addi $18, $0, 0x00A8FF  # Light Blue
-addi $17, $0, 0x964B00  # Brown
+
 jr $31
 
 background_def:
