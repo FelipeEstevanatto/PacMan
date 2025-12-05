@@ -1,4 +1,3 @@
-.include "clearScreen.asm"
 .include "map1.asm"
 .include "map2.asm"
 .include "gameover.asm"

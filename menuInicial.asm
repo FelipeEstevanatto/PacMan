@@ -1,4 +1,4 @@
-.include "set0Menu.asm" 	#Para chamar o arquivo externo
+.include "cappamap.asm"
 .macro menu
 .text
 
@@ -2809,7 +2809,8 @@ menuM:
     jal menuM
 mapa:
 
-set0Menu()
+clearScreen()
+cappamap()
 
 delay:
     addi $16, $16, -1

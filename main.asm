@@ -1,5 +1,7 @@
 .set macro 		            #To include an external file
 .include "menuInicial.asm"
+.include "clearScreen.asm"
+
 .data
 .text
 main:
